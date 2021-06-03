@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ApplicativeDemo", "ApplicativeDemo\ApplicativeDemo.fsproj", "{DB2D3AED-1B99-4FAE-B545-57177B9F0D99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB2D3AED-1B99-4FAE-B545-57177B9F0D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2D3AED-1B99-4FAE-B545-57177B9F0D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2D3AED-1B99-4FAE-B545-57177B9F0D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2D3AED-1B99-4FAE-B545-57177B9F0D99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
