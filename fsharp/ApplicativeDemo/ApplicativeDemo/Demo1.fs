@@ -34,6 +34,7 @@ let validateCvv cvv: Result<string, string> =
     else
         Ok cvv
 
+// Result<'a, 'b> -> Result<('a -> 'c), 'b> -> Result<'c, 'b>
 let apply a f =
     match f, a with
     | Ok g, Ok x -> g x |> Ok

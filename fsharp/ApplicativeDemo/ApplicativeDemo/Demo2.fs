@@ -13,27 +13,28 @@ let createCreditCard number expiry cvv = {
       Expiry = expiry
       Cvv = cvv }
 
-// check 1
+// check 1: returns list of errors
 let validateNumber number: Result<string, string list> =
     if String.length number < 2 then
         Error ["invalid credit card number"]
     else
         Ok number
 
-// check 2
+// check 2: returns list of errors
 let validateExpiry expiry: Result<string, string list> =
     if expiry = "invalid" then
         Error ["invalid expiry"]
     else
         Ok expiry
 
-// check 3
+// check 3: returns list of errors
 let validateCvv cvv: Result<string, string list> =
     if cvv = "invalid" then
         Error ["invalid cvv"]
     else
         Ok cvv
 
+// Result<'a, 'b list> -> Result<('a -> 'c), 'b list> -> Result<'c, 'b list>
 let apply a f =
     match f, a with
     | Ok g, Ok x -> g x |> Ok
