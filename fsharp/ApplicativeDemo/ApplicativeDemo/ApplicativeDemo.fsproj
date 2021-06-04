@@ -13,6 +13,7 @@
         <Compile Include="Demo2.fs" />
         <Compile Include="Demo3.fs" />
         <Compile Include="Program.fs" />
+        <Content Include="README.md" />
     </ItemGroup>
 
     <ItemGroup>
