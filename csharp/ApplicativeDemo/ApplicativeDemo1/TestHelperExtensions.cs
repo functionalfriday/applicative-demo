@@ -1,5 +1,9 @@
 using FluentAssertions;
 using LaYumba.Functional;
+// ReSharper disable HeapView.ClosureAllocation
+// ReSharper disable HeapView.DelegateAllocation
+// ReSharper disable HeapView.ObjectAllocation
+// ReSharper disable HeapView.PossibleBoxingAllocation
 
 namespace ApplicativeDemo1
 {
