@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Xunit;
 
 namespace ApplicativeDemo1
@@ -6,12 +5,19 @@ namespace ApplicativeDemo1
     public class Demo1
     {
         [Fact]
-        public void Test1()
+        public void Valid_number()
         {
-            // TODO setup credit card -> check new record syntax
-            var creditCard = new CreditCard();
-            // TODO create method to check validation result
-            creditCard.Number.ValidateNumber().Should().Be("todo");
+            var creditCard = new CreditCard("123", "456", "789");
+            var numberValidation = creditCard.Number.ValidateNumber();
+            numberValidation.CheckOk("123");
+        }
+
+        [Fact]
+        public void Invalid_number()
+        {
+            var creditCard = new CreditCard("invalid", "456", "789");
+            var numberValidation = creditCard.Number.ValidateNumber();
+            numberValidation.CheckError("invalid number: invalid");
         }
     }
 }
