@@ -1,3 +1,4 @@
+using System.Linq;
 using FluentAssertions;
 using LaYumba.Functional;
 // ReSharper disable HeapView.ClosureAllocation
@@ -20,5 +21,14 @@ namespace ApplicativeDemo1
                 .Match(
                     errors => errors.Should().BeEquivalentTo(F.Error(expected)),
                     s => true.Should().BeFalse());
+
+        public static void CheckErrors<T>(this Validation<T> validation, params string[] expected)
+        {
+            var expectedErrors = expected.ToList().Select(F.Error);
+            validation
+                .Match(
+                    errors => errors.Should().BeEquivalentTo(expectedErrors),
+                    s => true.Should().BeFalse());
+        }
     }
 }

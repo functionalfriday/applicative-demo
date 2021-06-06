@@ -1,4 +1,5 @@
 using Xunit;
+// ReSharper disable HeapView.ObjectAllocation
 
 namespace ApplicativeDemo1
 {
@@ -18,6 +19,17 @@ namespace ApplicativeDemo1
             var creditCard = new CreditCard("invalid", "456", "789");
             var numberValidation = creditCard.Number.ValidateNumber();
             numberValidation.CheckError("invalid number: invalid");
+        }
+
+        [Fact]
+        public void Collect_all_errors()
+        {
+            var creditCard = new CreditCard("invalid", "invalid", "invalid");
+            var cardValidation = creditCard.Validate();
+            cardValidation.CheckErrors(
+                "invalid number: invalid", 
+                "invalid expiry: invalid", 
+                "invalid cvv: invalid");
         }
     }
 }
