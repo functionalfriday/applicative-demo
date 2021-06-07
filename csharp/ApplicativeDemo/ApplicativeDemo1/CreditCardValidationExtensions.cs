@@ -26,12 +26,17 @@ namespace ApplicativeDemo1
 
         public static Validation<CreditCard> Validate(this CreditCard card)
         {
-            var result = Valid(wrapper)
-                .Apply(card.Number.ValidateNumber())
-                .Apply(card.Expiry.ValidateExpiry())
-                .Apply(card.Cvv.ValidateCvv());
-
-            return result;
+            // var result = Valid(wrapper)
+            //     .Apply(card.Number.ValidateNumber())
+            //     .Apply(card.Expiry.ValidateExpiry())
+            //     .Apply(card.Cvv.ValidateCvv());
+            
+            var result1 = Valid(wrapper)
+                .Apply3(card.Number.ValidateNumber())
+                .Apply2(card.Expiry.ValidateExpiry())
+                .Apply1(card.Cvv.ValidateCvv());
+            
+            return result1;
         }
     }
 }
