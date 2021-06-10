@@ -2,11 +2,12 @@
 import * as E from "fp-ts/lib/Either";
 import * as O from "fp-ts/lib/Option";
 import * as S from "fp-ts/lib/Semigroup";
-import { pipe } from "fp-ts/lib/function";
+import { flip, pipe } from "fp-ts/lib/function";
 import { NonEmptyArray } from "fp-ts/lib/NonEmptyArray";
 import { Semigroup } from "fp-ts/lib/string";
 // import { getSemigroup, of } from "fp-ts/lib/ReadonlyArray";
 import * as RA from "fp-ts/lib/ReadonlyArray";
+import { sequenceT } from "fp-ts/lib/Apply";
 
 export class CreditCard {
     constructor(
@@ -47,7 +48,6 @@ export const validate = (
     const createCreditCard = (a: string) => (b: string) => (c: string) =>
         new CreditCard(a, b, c);
 
-
     const v1 = (s: string): E.Either<ReadonlyArray<string>, string> => {
         return s !== "invalid" ? E.right(s) : E.left(RA.of("invalid number"));
     };
@@ -60,8 +60,16 @@ export const validate = (
         return s !== "invalid" ? E.right(s) : E.left(RA.of("invalid cvv"));
     };
 
-
     const V = E.getApplicativeValidation((RA.getSemigroup<string>()));
+
+    // this does not work, because V.ap wants 2 arguments but only has 1?
+    // const fromPipe = pipe(
+    //     V.of(createCreditCard),
+    //     V.ap(v1(card.number)),
+    //     V.ap(v2(card.expiry)),
+    //     V.ap(v3(card.cvv))
+    // );
+    // return fromPipe;
 
     const liftedFunction = V.of(createCreditCard);
     const afterFirstValidation = V.ap(liftedFunction, v1(card.number));
